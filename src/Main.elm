@@ -43,9 +43,11 @@ update msg model =
 
 view model =
     div []
-        [ h1 [] [ text "Stock Calculator" ]
-        , input [ onInput ChangePrice, value model.pricePerShare, type_ "number" ] []
-        , input [ onInput ChangeQuantity, value model.quantity, type_ "number" ] []
+        [ h1 [] [ text "Stockie - A Tiny Stock Price Calculator" ]
+        , input [ onInput ChangePrice, placeholder "Price Per Share", value model.pricePerShare, type_ "number" ] []
+        , input [ onInput ChangeQuantity, placeholder "Quantity", value model.quantity, type_ "number" ] []
+        , input [ onInput ChangeCommission, placeholder "commission", value model.commission, type_ "number" ] []
+        , input [ onInput ChangeDesiredProfit, placeholder "Desired Profit", value model.desiredProfit, type_ "number" ] []
         , p []
             [ text
                 (calculateResult
@@ -67,5 +69,3 @@ calculateResult model =
 
 main =
     Browser.sandbox { init = init, view = view, update = update }
-
-
