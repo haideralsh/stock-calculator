@@ -59,7 +59,7 @@ view model =
 
 calculateResult : Model -> String
 calculateResult model =
-    case Maybe.map2 (*) (String.toFloat model.pricePerShare) (String.toFloat model.quantity) of
+    case Maybe.map2 (/) (Maybe.map2 (+) (Maybe.map2 (*) (String.toFloat model.pricePerShare) (String.toFloat model.quantity)) (Maybe.map2 (+) (String.toFloat model.commission) (String.toFloat model.desiredProfit))) (String.toFloat model.quantity) of
         Just value ->
             String.fromFloat value
 
