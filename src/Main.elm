@@ -44,10 +44,10 @@ update msg model =
 view model =
     div []
         [ h1 [] [ text "Stockie - A Tiny Stock Price Calculator" ]
-        , input [ onInput ChangePrice, placeholder "Price Per Share", value model.pricePerShare, type_ "number" ] []
-        , input [ onInput ChangeQuantity, placeholder "Quantity", value model.quantity, type_ "number" ] []
-        , input [ onInput ChangeCommission, placeholder "commission", value model.commission, type_ "number" ] []
-        , input [ onInput ChangeDesiredProfit, placeholder "Desired Profit", value model.desiredProfit, type_ "number" ] []
+        , input [ onInput ChangePrice, placeholder "Price Per Share", value model.pricePerShare, type_ "number", step "0.01" ] []
+        , input [ onInput ChangeQuantity, placeholder "Quantity", value model.quantity, type_ "number", step "1"] []
+        , input [ onInput ChangeCommission, placeholder "commission", value model.commission, type_ "number", step "0.01"] []
+        , input [ onInput ChangeDesiredProfit, placeholder "Desired Profit", value model.desiredProfit, type_ "number", step "0.01" ] []
         , p []
             [ text
                 (calculateResult
@@ -59,7 +59,7 @@ view model =
 
 calculateResult : Model -> String
 calculateResult model =
-    case Maybe.map2 (/) (Maybe.map2 (+) (Maybe.map2 (*) (String.toFloat model.pricePerShare) (String.toFloat model.quantity)) (Maybe.map2 (+) (String.toFloat model.commission) (String.toFloat model.desiredProfit))) (String.toFloat model.quantity) of
+    case Maybe.map2 (/) (Maybe.map2 (+) (Maybe.map2 (*) (String.toFloat model.pricePerShare) (String.toInt model.quantity)) (Maybe.map2 (+) (String.toFloat model.commission) (String.toFloat model.desiredProfit))) (String.toFloat model.quantity) of
         Just value ->
             String.fromFloat value
 
