@@ -64,7 +64,7 @@ calculateResult model =
             String.fromFloat value
 
         Nothing ->
-            ""
+            "Please enter a valid input"
 
 
 main =
