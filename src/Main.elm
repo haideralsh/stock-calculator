@@ -76,12 +76,14 @@ floatIfInt value =
             String.toFloat value
 
         Nothing ->
+            -- TODO: Propagate the errors to the view?
             Nothing
 
 
 calculateResult : Model -> String
 calculateResult model =
     case
+        -- TODO: Validate it is not a negative
         Maybe.map2 (/)
             (Maybe.map2 (+)
                 (Maybe.map2 (*) (String.toFloat model.pricePerShare) (floatIfInt model.quantity))
@@ -93,6 +95,7 @@ calculateResult model =
             (String.toFloat model.quantity)
     of
         Just value ->
+            -- TODO: Make it Html so you can add spans
             "Sell at $" ++ String.fromFloat value ++ " to make $" ++ model.desiredProfit
 
         Nothing ->
