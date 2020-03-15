@@ -60,7 +60,7 @@ view model =
 floatIfInt : String -> Maybe Float
 floatIfInt value =
     case String.toInt value of
-        Just parsedInt ->
+        Just _ ->
             String.toFloat value
 
         Nothing ->
