@@ -93,7 +93,7 @@ calculateResult model =
             (String.toFloat model.quantity)
     of
         Just value ->
-            String.fromFloat value
+            "Sell at $" ++ String.fromFloat value ++ " to make $" ++ model.desiredProfit
 
         Nothing ->
             "Please enter a valid input"
