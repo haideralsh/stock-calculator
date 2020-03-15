@@ -6,6 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 
 
+init : Model
 init =
     { pricePerShare = "1", quantity = "2", commission = "10", desiredProfit = "100" }
 
@@ -102,5 +103,6 @@ calculateResult model =
             "Please enter a valid input"
 
 
+main : Program () Model Msg
 main =
     Browser.sandbox { init = init, view = view, update = update }
