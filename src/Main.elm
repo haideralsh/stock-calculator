@@ -44,10 +44,10 @@ update msg model =
 view model =
     div []
         [ h1 [] [ text "Stockie - A Tiny Stock Price Calculator" ]
-        , input [ onInput ChangePrice, placeholder "Price Per Share", value model.pricePerShare, type_ "number", step "0.01" ] []
+        , input [ onInput ChangePrice, placeholder "Price Per Share", value model.pricePerShare, type_ "number", step "0.10" ] []
         , input [ onInput ChangeQuantity, placeholder "Quantity", value model.quantity, type_ "number", step "1" ] []
-        , input [ onInput ChangeCommission, placeholder "commission", value model.commission, type_ "number", step "0.01" ] []
-        , input [ onInput ChangeDesiredProfit, placeholder "Desired Profit", value model.desiredProfit, type_ "number", step "0.01" ] []
+        , input [ onInput ChangeCommission, placeholder "commission", value model.commission, type_ "number", step "0.10" ] []
+        , input [ onInput ChangeDesiredProfit, placeholder "Desired Profit", value model.desiredProfit, type_ "number", step "0.10" ] []
         , p []
             [ text
                 (calculateResult
